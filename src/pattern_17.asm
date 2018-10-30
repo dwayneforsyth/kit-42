@@ -26,14 +26,6 @@ table_type_17
 ;
 ;  13 bytes
 ;
-;  AAAABBBB
-;
-;  A = shire Right/Left
-;  BB = two bit intensity to shift on
-;  CCCCC = Number of shifts to loop
-;
-;  if CCCCC = 0x11111, specical case: turn all LEDs off.
-;
 
 
     call         get_next_pattern_entry

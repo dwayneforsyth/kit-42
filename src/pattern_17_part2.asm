@@ -26,9 +26,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
 ;**********************************************************************
 
 ;1R 0x0f
-    movlw        LOW C5_C3_reg
+    movlw        LOW C3_C2_reg
     movwf        FSR0L
-    movlw        HIGH C5_C3_reg
+    movlw        HIGH C3_C2_reg
     movwf        FSR0H
 
     btfsc        in1,0            
@@ -38,9 +38,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f      
 
 ;2R 0xf0
-    movlw        LOW C2_C3_reg
+    movlw        LOW C4_C3_reg
     movwf        FSR0L
-    movlw        HIGH C2_C3_reg
+    movlw        HIGH C4_C3_reg
     movwf        FSR0H
 
     btfsc        in1,1   
@@ -51,9 +51,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
 
 
 ;3R 0xf0
-    movlw        LOW C0_C4_reg
+    movlw        LOW C4_C0_reg
     movwf        FSR0L
-    movlw        HIGH C0_C4_reg
+    movlw        HIGH C4_C0_reg
     movwf        FSR0H
 
     btfsc        in1,2   
@@ -75,9 +75,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f      
 
 ;5R 0xf0
-    movlw        LOW C3_C5_reg
+    movlw        LOW C5_C1_reg
     movwf        FSR0L
-    movlw        HIGH C3_C5_reg
+    movlw        HIGH C5_C1_reg
     movwf        FSR0H
 
     btfsc        in1,4   
@@ -87,9 +87,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f    
 
 ;6R 0xf0
-    movlw        LOW C4_C5_reg
+    movlw        LOW C0_C3_reg
     movwf        FSR0L
-    movlw        HIGH C4_C5_reg
+    movlw        HIGH C0_C3_reg
     movwf        FSR0H
 
     btfsc        in1,5   
@@ -99,9 +99,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;7R 0xf0
-    movlw        LOW A5_C0_reg
+    movlw        LOW C3_A5_reg
     movwf        FSR0L
-    movlw        HIGH A5_C0_reg
+    movlw        HIGH C3_A5_reg
     movwf        FSR0H
 
     btfsc        in1,6   
@@ -111,9 +111,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f   
 
 ;8R 0x0f
-    movlw        LOW C3_C0_reg
+    movlw        LOW C0_A5_reg
     movwf        FSR0L
-    movlw        HIGH C3_C0_reg
+    movlw        HIGH C0_A5_reg
     movwf        FSR0H
 
     btfsc        in1,7 
@@ -123,9 +123,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;9R 0x0f
-    movlw        LOW C0_A5_reg
+    movlw        LOW A5_C2_reg
     movwf        FSR0L
-    movlw        HIGH C0_A5_reg
+    movlw        HIGH A5_C2_reg
     movwf        FSR0H
 
     btfsc        in0,0       
@@ -135,9 +135,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f  
 
 ;10R 0x0f
-    movlw        LOW C3_A5_reg
+    movlw        LOW A5_C5_reg
     movwf        FSR0L
-    movlw        HIGH C3_A5_reg
+    movlw        HIGH A5_C5_reg
     movwf        FSR0H
 
     btfsc        in0,1   
@@ -147,9 +147,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f  
 
 ;11R 0xf0
-    movlw        LOW A5_C2_reg
+    movlw        LOW C2_C1_reg
     movwf        FSR0L
-    movlw        HIGH A5_C2_reg
+    movlw        HIGH C2_C1_reg
     movwf        FSR0H
 
     btfsc        in0,2   
@@ -159,9 +159,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f  
 
 ;12R 0x0f
-    movlw        LOW C3_C2_reg
+    movlw        LOW C2_C5_reg
     movwf        FSR0L
-    movlw        HIGH C3_C2_reg
+    movlw        HIGH C2_C5_reg
     movwf        FSR0H
 
     btfsc        in0,3   
@@ -170,34 +170,10 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     btfsc        in6,3   
     decf         INDF0,f    
 
-;13R 0xf0
-    movlw        LOW A5_C1_reg
-    movwf        FSR0L
-    movlw        HIGH A5_C1_reg
-    movwf        FSR0H
-
-    btfsc        in0,4   
-    incf         INDF0,f  
-
-    btfsc        in6,4   
-    decf         INDF0,f 
-
-;14R 0x0f
+;1G 0xf0
     movlw        LOW C3_C1_reg
     movwf        FSR0L
     movlw        HIGH C3_C1_reg
-    movwf        FSR0H
-
-    btfsc        in0,5   
-    incf         INDF0,f 
-
-    btfsc        in6,5   
-    decf         INDF0,f 
-
-;1G 0xf0
-    movlw        LOW A5_C3_reg
-    movwf        FSR0L
-    movlw        HIGH A5_C3_reg
     movwf        FSR0H
 
     btfsc        in3,0   
@@ -207,9 +183,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;2G 0xf0
-    movlw        LOW C0_C3_reg
+    movlw        LOW C4_C2_reg
     movwf        FSR0L
-    movlw        HIGH C0_C3_reg
+    movlw        HIGH C4_C2_reg
     movwf        FSR0H
 
     btfsc        in3,1   
@@ -219,9 +195,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;3G 0xf0
-    movlw        LOW A5_C4_reg
+    movlw        LOW C4_A5_reg
     movwf        FSR0L
-    movlw        HIGH A5_C4_reg
+    movlw        HIGH C4_A5_reg
     movwf        FSR0H
 
     btfsc        in3,2   
@@ -231,9 +207,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;4G 0xf0
-    movlw        LOW C3_C4_reg
+    movlw        LOW C5_C3_reg
     movwf        FSR0L
-    movlw        HIGH C3_C4_reg
+    movlw        HIGH C5_C3_reg
     movwf        FSR0H
 
     btfsc        in3,3   
@@ -243,9 +219,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;5G 0xf0
-    movlw        LOW C0_C5_reg
+    movlw        LOW C5_C0_reg
     movwf        FSR0L
-    movlw        HIGH C0_C5_reg
+    movlw        HIGH C5_C0_reg
     movwf        FSR0H
 
     btfsc        in3,4   
@@ -255,9 +231,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;6G 0xf0
-    movlw        LOW A5_C5_reg
+    movlw        LOW C0_C2_reg
     movwf        FSR0L
-    movlw        HIGH A5_C5_reg
+    movlw        HIGH C0_C2_reg
     movwf        FSR0H
 
     btfsc        in3,5   
@@ -267,9 +243,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;7G 0x0f
-    movlw        LOW C4_C0_reg
+    movlw        LOW C3_C5_reg
     movwf        FSR0L
-    movlw        HIGH C4_C0_reg
+    movlw        HIGH C3_C5_reg
     movwf        FSR0H
 
     btfsc        in3,6   
@@ -279,9 +255,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f 
 
 ;8G 0x0f
-    movlw        LOW C5_C0_reg
+    movlw        LOW C0_C5_reg
     movwf        FSR0L
-    movlw        HIGH C5_C0_reg
+    movlw        HIGH C0_C5_reg
     movwf        FSR0H
 
     btfsc        in3,7   
@@ -291,9 +267,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;9G 0x0f
-    movlw        LOW C4_A5_reg
+    movlw        LOW A5_C1_reg
     movwf        FSR0L
-    movlw        HIGH C4_A5_reg
+    movlw        HIGH A5_C1_reg
     movwf        FSR0H
 
     btfsc        in2,0   
@@ -303,9 +279,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;10G 0x0f
-    movlw        LOW C5_A5_reg
+    movlw        LOW A5_C4_reg
     movwf        FSR0L
-    movlw        HIGH C5_A5_reg
+    movlw        HIGH A5_C4_reg
     movwf        FSR0H
 
     btfsc        in2,1   
@@ -315,9 +291,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;11G 0x0f
-    movlw        LOW C4_C2_reg
+    movlw        LOW C2_C0_reg
     movwf        FSR0L
-    movlw        HIGH C4_C2_reg
+    movlw        HIGH C2_C0_reg
     movwf        FSR0H
 
     btfsc        in2,2   
@@ -327,39 +303,15 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;12G 0x0f
-    movlw        LOW C5_C2_reg
+    movlw        LOW C2_C4_reg
     movwf        FSR0L
-    movlw        HIGH C5_C2_reg
+    movlw        HIGH C2_C4_reg
     movwf        FSR0H
 
     btfsc        in2,3   
     incf         INDF0,f  
 
     btfsc        in8,3   
-    decf         INDF0,f
-
-;13G 0x0f
-    movlw        LOW C4_C1_reg
-    movwf        FSR0L
-    movlw        HIGH C4_C1_reg
-    movwf        FSR0H
-
-    btfsc        in2,4   
-    incf         INDF0,f 
-
-    btfsc        in8,4   
-    decf         INDF0,f
-
-;14G 0x0f
-    movlw        LOW C5_C1_reg
-    movwf        FSR0L
-    movlw        HIGH C5_C1_reg
-    movwf        FSR0H
-
-    btfsc        in2,5   
-    incf         INDF0,f   
-
-    btfsc        in8,5   
     decf         INDF0,f
 
 ;1B 0xf0
@@ -375,9 +327,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;2B 0x0f
-    movlw        LOW C4_C3_reg
+    movlw        LOW C4_C1_reg
     movwf        FSR0L
-    movlw        HIGH C4_C3_reg
+    movlw        HIGH C4_C1_reg
     movwf        FSR0H
 
     btfsc        in5,1   
@@ -387,9 +339,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;3B 0xf0
-    movlw        LOW C2_C4_reg
+    movlw        LOW C4_C5_reg
     movwf        FSR0L
-    movlw        HIGH C2_C4_reg
+    movlw        HIGH C4_C5_reg
     movwf        FSR0H
 
     btfsc        in5,2   
@@ -399,9 +351,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;4B 0xf0
-    movlw        LOW C5_A5_reg
+    movlw        LOW C5_C2_reg
     movwf        FSR0L
-    movlw        HIGH C5_A5_reg
+    movlw        HIGH C5_C2_reg
     movwf        FSR0H
 
     btfsc        in5,3   
@@ -411,9 +363,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;5B 0xf0
-    movlw        LOW C5_C2_reg
+    movlw        LOW C5_A5_reg
     movwf        FSR0L
-    movlw        HIGH C5_C2_reg
+    movlw        HIGH C5_A5_reg
     movwf        FSR0H
 
     btfsc        in5,4   
@@ -423,9 +375,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;6B 0xf0
-    movlw        LOW C2_C5_reg
+    movlw        LOW C0_C1_reg
     movwf        FSR0L
-    movlw        HIGH C2_C5_reg
+    movlw        HIGH C0_C1_reg
     movwf        FSR0H
 
     btfsc        in5,5   
@@ -435,9 +387,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;7B 0x0f
-    movlw        LOW C2_C0_reg
+    movlw        LOW C3_C4_reg
     movwf        FSR0L
-    movlw        HIGH C2_C0_reg
+    movlw        HIGH C3_C4_reg
     movwf        FSR0H
 
     btfsc        in5,6   
@@ -459,9 +411,9 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;9B 0x0f
-    movlw        LOW C2_A5_reg
+    movlw        LOW A5_C0_reg
     movwf        FSR0L
-    movlw        HIGH C2_A5_reg
+    movlw        HIGH A5_C0_reg
     movwf        FSR0H
 
     btfsc        in4,0   
@@ -495,39 +447,15 @@ rgb_stick_expand2  ; this is a nice chunk of code without jumps to sit on the 11
     decf         INDF0,f
 
 ;12B 0xf0
-    movlw        LOW C0_C2_reg
+    movlw        LOW C2_C3_reg
     movwf        FSR0L
-    movlw        HIGH C0_C2_reg
+    movlw        HIGH C2_C3_reg
     movwf        FSR0H
 
     btfsc        in4,3   
     incf         INDF0,f 
  
     btfsc        in10,3   
-    decf         INDF0,f
-
-;13B 0x0f
-    movlw        LOW C2_C1_reg
-    movwf        FSR0L
-    movlw        HIGH C2_C1_reg
-    movwf        FSR0H
-
-    btfsc        in4,4   
-    incf         INDF0,f 
-
-    btfsc        in10,4   
-    decf         INDF0,f
-
-;14B 0xf0
-    movlw        LOW C0_C1_reg
-    movwf        FSR0L
-    movlw        HIGH C0_C1_reg
-    movwf        FSR0H
-
-    btfsc        in4,5   
-    incf         INDF0,f 
-
-    btfsc        in10,5   
     decf         INDF0,f
 
     return
