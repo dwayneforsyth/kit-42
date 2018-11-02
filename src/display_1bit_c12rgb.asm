@@ -9,7 +9,7 @@ display_1bit ; RGB Stick (14 * 3 = 42 LEDs
     movlw        LOW C3_C2_reg
     movwf        FSR0L
 
-    movlw        0x50
+    movlw        0x24
     movwf        temp4
 
     movlw        0x00

@@ -151,12 +151,12 @@ display_pattern_id
     banksel      pattern
     incf         pattern,w      ; W = pattern + 1
 
-    movwf        in5
+    movwf        in1
     clrf         in0
     clrf         in2
     clrf         in3
     clrf         in4
-    clrf         in1
+    clrf         in5
 
     movlw        b'00111000'
     btfsc        demo_mode,0

@@ -1,9 +1,9 @@
-#define BRIGHT1_lo 0x04
-#define BRIGHT2_lo 0x0A
-#define BRIGHT1_hi 0x40
-#define BRIGHT2_hi 0xA0
+;#define BRIGHT1_lo 0x04
+;#define BRIGHT2_lo 0x0A
+;#define BRIGHT1_hi 0x40
+;#define BRIGHT2_hi 0xA0
 
-#define LEDCOUNT 11
+#define LEDCOUNT 12
 ;**********************************************************************
 table_type_16
 ;**********************************************************************
@@ -15,7 +15,12 @@ table_type_16
 ;  A = shire Right/Left
 ;  BB = two bit intensity to shift on
 ;  CCCCC = Number of shifts to loop
+;  ABCxxxxx rrggbbxx
+;  A = Red up/down
+;  B = Green up/Down
 ;
+;  rrbbggxx
+
 ;  if CCCCC = 0x11111, specical case: turn all LEDs off.
 
     var t7count
@@ -110,33 +115,36 @@ t7_return
 red_up
 ;**********************************************************************
 
-    movlw        LEDCOUNT
+    movlw        0x0b
     movwf        t17_loop
 
-    movlw        C2_C1_reg   ; index = 11 R
-    movwf        FSR
+    movlw        LOW C2_C1_reg   ; index = 11 R
+    movwf        FSR0L
 
 red_up_loop
-    movfw        INDF        ; load R [index]
-    incf         FSR,f         ; index ++
-    movwf        INDF        ; store R [index]
+    movfw        INDF0        ; load R [index]
+    incf         FSR0L,f         ; index ++
+    movwf        INDF0        ; store R [index]
 
-    decf         FSR,f         ; index - 2
-    decf         FSR,f
+    decf         FSR0L,f         ; index - 2
+    decf         FSR0L,f
 
     decfsz       t17_loop,f
     goto         red_up_loop
 ;
 ;   01 Red
 ;
-    incf         FSR,f
-    clrf         INDF
+;    movlw        LOW C3_C2_reg   ; index = 1 R
+;    movwf        FSR0L
+
+    incf         FSR0L,f
+    clrf         INDF0
     movlw        BRIGHT1
     btfsc        in1,6
-    addwf        INDF,f     ;01
+    addwf        INDF0,f     ;01
     movlw        BRIGHT2
     btfsc        in1,7
-    addwf        INDF,f     ;01
+    addwf        INDF0,f     ;01
 
     return
 
@@ -144,7 +152,7 @@ red_up_loop
 red_down
 ;**********************************************************************
 
-    movlw        LEDCOUNT
+    movlw        0x0b
     movwf        t17_loop
 
     movlw        C4_C3_reg   ; index = 02 R
@@ -163,14 +171,19 @@ red_down_loop
 ;
 ;   14 Red
 ;
+;   movlw        LOW C2_C5_reg   ; index = 12 R
+;   movwf        FSR0L
+;   movlw        HIGH C2_C5_reg   ; index = 12 R
+;   movwf        FSR0H
+
     decf         FSR,f
-    clrf         INDF
+    clrf         INDF0
     movlw        BRIGHT1
     btfsc        in1,6
-    addwf        INDF,f     ;01
+    addwf        INDF0,f     ;01
     movlw        BRIGHT2
     btfsc        in1,7
-    addwf        INDF,f     ;01
+    addwf        INDF0,f     ;01
 
     return
 
@@ -178,7 +191,7 @@ red_down_loop
 green_up
 ;**********************************************************************
 
-    movlw        LEDCOUNT
+    movlw        0x0b
     movwf        t17_loop
 
     movlw        C2_C0_reg   ; index = 11 G
@@ -212,10 +225,10 @@ green_up_loop
 green_down
 ;**********************************************************************
 
-    movlw        LEDCOUNT
+    movlw        0x0b
     movwf        t17_loop
 
-    movlw        C4_A5_reg   ; index = 02 Green
+    movlw        C4_C2_reg   ; index = 02 Green
     movwf        FSR
 
 green_down_loop
@@ -247,10 +260,10 @@ green_down_loop
 blue_up
 ;**********************************************************************
 
-    movlw        LEDCOUNT
+    movlw        0x0b
     movwf        t17_loop
 
-    movlw        C2_A5_reg   ; index = 11 G
+    movlw        C2_A5_reg   ; index = 11 B
     movwf        FSR
 
 blue_up_loop
@@ -282,10 +295,10 @@ blue_up_loop
 blue_dowm
 ;**********************************************************************
 
-    movlw        LEDCOUNT
+    movlw        0x0b
     movwf        t17_loop
 
-    movlw        C4_C5_reg   ; index = 02 Blue
+    movlw        C4_C1_reg   ; index = 02 Blue
     movwf        FSR
 
 blue_down_loop
