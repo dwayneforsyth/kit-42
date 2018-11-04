@@ -78,7 +78,7 @@
 #define NEWEEPROM
 #include <p16f18324.inc> 
 ; LIST P=PIC16F18324
-NUM_TAB     equ d'15'   ;highest pattern table number
+NUM_TAB     equ d'17'   ;highest pattern table number
 STROBE_LINES equ 0x07
 DELAYTIMER equ 0x18 
 MAX_IN_STORE equ d'12'

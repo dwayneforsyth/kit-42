@@ -1,7 +1,72 @@
 ;**********************************************************************
 ;
+;**********************************************************************
+
+    start_pattern 0x10, 0xff
+;
+;        11112222    33334444  
+    dt b'00011111',b'00000000'         ; clear all Leds
+    dt b'10001101',b'11000000'         ; 12 cycles hi Red down
+    dt b'00011111',b'00000000'         ; clear all Leds
+    dt b'00001101',b'11000000'         ; 12 cycles hi Red up
+    dt b'00011111',b'00000000'         ; clear all Leds
+    dt b'01001101',b'00110000'         ; 12 cycles hi Green down
+    dt b'00011111',b'00000000'         ; clear all Leds
+    dt b'00001101',b'00110000'         ; 12 cycles hi Green up
+    dt b'00011111',b'00000000'         ; clear all Leds
+    dt b'00101101',b'00001100'         ; 12 cycles hi blue down
+    dt b'00011111',b'00000000'         ; clear all Leds
+    dt b'00001101',b'00001100'         ; 12 cycles hi blue up
+    end_pattern
+
+;**********************************************************************
+;
 ;***********************************************************************
 
+    start_pattern 0x12, 0x04
+;            RRRR    RRRRRRRR      GGGGGG    GGGGGGGG      BBBBBB    BBBBBBBB
+    dt b'11000000',b'11111111',b'11001111',b'11110000',b'11001111',b'00001111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001000',b'01111111',b'11001111',b'11111000',b'11001111',b'10000111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001100',b'00111111',b'11000111',b'11111100',b'11001111',b'11000011' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001110',b'00011111',b'11000011',b'11111110',b'11001111',b'11100001' ; Red Down, Green down, Blue down, 64 count
+
+    dt b'11001111',b'00001111',b'11000000',b'11111111',b'11001111',b'11110000' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001111',b'10000111',b'11001000',b'01111111',b'11000111',b'11111000' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001111',b'11000011',b'11001100',b'00111111',b'11000011',b'11111100' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001111',b'11100001',b'11001110',b'00011111',b'11000001',b'11111110' ; Red Down, Green down, Blue down, 64 count
+
+    dt b'11001111',b'11110000',b'11001111',b'00001111',b'11000000',b'11111111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11000111',b'11111000',b'11001111',b'10000111',b'11001000',b'01111111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11000011',b'11111100',b'11001111',b'11000011',b'11001100',b'00111111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11000001',b'11111110',b'11001111',b'11100001',b'11001110',b'00011111' ; Red Down, Green down, Blue down, 64 count
+
+    end_pattern
+
+;**********************************************************************
+;
+;***********************************************************************
+
+    start_pattern 0x12, 0x04
+;            RRRR    RRRRRRRR      GGGGGG    GGGGGGGG      BBBBBB    BBBBBBBB
+    dt b'11000000',b'11111111',b'11001110',b'00011111',b'11001111',b'01000011' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001000',b'01111111',b'11001100',b'00111111',b'11001111',b'11100001' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001100',b'00111111',b'11001000',b'01111111',b'11001111',b'11110000' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001110',b'00011111',b'11000000',b'11111111',b'11000111',b'11111000' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001111',b'00001111',b'11000001',b'11111110',b'11000011',b'11111100' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001111',b'10000111',b'11000011',b'11111100',b'11000001',b'11111110' ; Red Down, Green down, Blue down, 64 count
+
+    dt b'11001111',b'11000011',b'11000111',b'11111000',b'11000000',b'11111111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001111',b'11100001',b'11001111',b'11110000',b'11001000',b'01111111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11001111',b'11110000',b'11001111',b'11100001',b'11001100',b'00111111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11000111',b'11111000',b'11001111',b'11000011',b'11001110',b'00011111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11000011',b'11111100',b'11001111',b'10000111',b'11001111',b'00001111' ; Red Down, Green down, Blue down, 64 count
+    dt b'11000001',b'11111110',b'11001111',b'00001111',b'11001111',b'00000111' ; Red Down, Green down, Blue down, 64 count
+
+    end_pattern
+
+;**********************************************************************
+;
+;***********************************************************************
 
     start_pattern 0x12, 0x04
     dt b'11111111',b'11111111',b'11000000',b'00000000',b'11000000',b'00000000' ; Red up, Green down, Blue down, 64 count
@@ -408,26 +473,6 @@
     dt b'00101100',b'00000000'         ; 12 cycles blank down
     end_pattern
 
-;**********************************************************************
-;
-;**********************************************************************
-
-    start_pattern 0x10, 0xff
-;
-;        11112222    33334444  
-    dt b'00011111',b'00000000'         ; clear all Leds
-    dt b'10001101',b'11000000'         ; 12 cycles hi Red down
-    dt b'00011111',b'00000000'         ; clear all Leds
-    dt b'00001101',b'11000000'         ; 12 cycles hi Red up
-    dt b'00011111',b'00000000'         ; clear all Leds
-    dt b'01001101',b'00110000'         ; 12 cycles hi Green down
-    dt b'00011111',b'00000000'         ; clear all Leds
-    dt b'00001101',b'00110000'         ; 12 cycles hi Green up
-    dt b'00011111',b'00000000'         ; clear all Leds
-    dt b'00101101',b'00001100'         ; 12 cycles hi blue down
-    dt b'00011111',b'00000000'         ; clear all Leds
-    dt b'00001101',b'00001100'         ; 12 cycles hi blue up
-    end_pattern
 
 
 
